@@ -1,4 +1,5 @@
 import { firebaseConfig } from "./firebase-config.js?v=2";
+import { saveHumanFile } from "./human-file.js?v=1";
 
 const button = document.querySelector("#google-sign-in");
 const message = document.querySelector("#auth-message");
@@ -6,6 +7,10 @@ const signedOut = document.querySelector("#signed-out-view");
 const signedIn = document.querySelector("#signed-in-view");
 const accountName = document.querySelector("#account-name");
 const signOutButton = document.querySelector("#sign-out");
+const humanFileLink = document.querySelector("#human-file");
+const fileMessage = document.querySelector("#file-message");
+let fileUrl;
+let authGeneration = 0;
 
 const configured = ["apiKey", "authDomain", "projectId", "appId"].every(
   (key) => typeof firebaseConfig[key] === "string" && firebaseConfig[key].trim()
@@ -25,11 +30,30 @@ if (!configured) {
     const auth = authSdk.getAuth(initializeApp(firebaseConfig));
     const provider = new authSdk.GoogleAuthProvider();
 
-    authSdk.onAuthStateChanged(auth, (user) => {
+    authSdk.onAuthStateChanged(auth, async (user) => {
+      const generation = ++authGeneration;
+      if (fileUrl) URL.revokeObjectURL(fileUrl);
+      fileUrl = undefined;
+      humanFileLink.hidden = true;
+      humanFileLink.removeAttribute("href");
+      fileMessage.textContent = "";
       signedOut.hidden = Boolean(user);
       signedIn.hidden = !user;
-      if (user) accountName.textContent = user.displayName || user.email || "friend";
       button.disabled = false;
+      if (!user) return;
+
+      accountName.textContent = user.displayName || user.email || "friend";
+      try {
+        const file = await saveHumanFile(user);
+        if (generation !== authGeneration) return;
+        fileUrl = URL.createObjectURL(file);
+        humanFileLink.href = fileUrl;
+        humanFileLink.hidden = false;
+      } catch {
+        if (generation === authGeneration) {
+          fileMessage.textContent = "Could not save human.md. Please refresh and try again.";
+        }
+      }
     }, () => {
       button.disabled = true;
       message.textContent = "Sign-in could not be loaded. Please refresh and try again.";
