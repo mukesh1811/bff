@@ -3,54 +3,32 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f6f7f5" />
-    <meta name="description" content="BFF is a bot, a friend, forever. Sign in to get started." />
+    <meta name="theme-color" content="#ffffff" />
     <title>BFF — Bot Friend Forever</title>
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./app.js"></script>
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="wordmark" href="./" aria-label="BFF home">bff<span aria-hidden="true">.</span></a>
-        <span class="header-note">a companion in the making <span aria-hidden="true">↗</span></span>
-      </header>
+    <main>
+      <h1>bot<br />friend<br />forever</h1>
 
-      <main class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="signal" aria-hidden="true"></span> YOUR PERSONAL AI COMPANION</p>
-          <h1><span>bot</span><span>friend</span><span class="last-line">forever<span class="full-stop">.</span></span></h1>
-          <p class="hero-subtitle">Someone to talk to. Something that remembers.<br />A little more yours, every day.</p>
-        </div>
+      <div id="signed-out-view">
+        <button id="google-sign-in" type="button" disabled>
+          <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 5.38 6.51 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6C44.4 38.03 46.98 31.71 46.98 24.55z" />
+            <path fill="#FBBC05" d="M10.53 28.59A14.42 14.42 0 0 1 9.75 24c0-1.6.27-3.15.77-4.59l-7.98-6.2A23.96 23.96 0 0 0 0 24c0 3.87.93 7.51 2.56 10.78l7.97-6.19z" />
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.91-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.18 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.97 6.19C6.51 42.62 14.62 48 24 48z" />
+          </svg>
+          Continue with Google
+        </button>
+        <p id="auth-message" role="status" aria-live="polite"></p>
+      </div>
 
-        <section class="sign-in-card" aria-labelledby="card-title">
-          <div class="card-topline"><span>01 / BEGIN HERE</span><span class="asterisk" aria-hidden="true">✳</span></div>
-          <div class="card-content" id="signed-out-view">
-            <h2 id="card-title">A good friendship starts with hello.</h2>
-            <p>Sign in to meet your BFF.</p>
-            <button class="google-button" id="google-sign-in" type="button" disabled>
-              <svg class="google-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6C44.4 38.03 46.98 31.71 46.98 24.55z" />
-                <path fill="#FBBC05" d="M10.53 28.59A14.42 14.42 0 0 1 9.75 24c0-1.6.27-3.15.77-4.59l-7.98-6.2A23.96 23.96 0 0 0 0 24c0 3.87.93 7.51 2.56 10.78l7.97-6.19z" />
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.91-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.18 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.97 6.19C6.51 42.62 14.62 48 24 48z" />
-              </svg>
-              <span>Continue with Google</span>
-              <span class="button-arrow" aria-hidden="true">↗</span>
-            </button>
-            <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
-          </div>
-
-          <div class="card-content" id="signed-in-view" hidden>
-            <h2 id="welcome-title">Hello again.</h2>
-            <p>You’re signed in as <strong id="account-name"></strong>.</p>
-            <button class="google-button sign-out-button" id="sign-out" type="button">Sign out <span aria-hidden="true">↗</span></button>
-          </div>
-          <div class="card-bottomline"><span>YOU + BFF</span><span aria-hidden="true">∞</span></div>
-        </section>
-      </main>
-
-      <footer class="site-footer"><span>MADE FOR THE CONVERSATIONS THAT MATTER.</span><span>© <span id="year"></span> BFF</span></footer>
-    </div>
+      <div id="signed-in-view" hidden>
+        <p>Hi, <strong id="account-name"></strong>.</p>
+        <button id="sign-out" type="button">Sign out</button>
+      </div>
+    </main>
   </body>
 </html>
