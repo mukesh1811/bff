@@ -6,7 +6,6 @@ const signedOut = document.querySelector("#signed-out-view");
 const signedIn = document.querySelector("#signed-in-view");
 const accountName = document.querySelector("#account-name");
 const signOutButton = document.querySelector("#sign-out");
-document.querySelector("#year").textContent = new Date().getFullYear();
 
 const configured = ["apiKey", "authDomain", "projectId", "appId"].every(
   (key) => typeof firebaseConfig[key] === "string" && firebaseConfig[key].trim()
