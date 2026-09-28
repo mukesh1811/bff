@@ -10,10 +10,10 @@ main {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 40px 24px;
-  text-align: center;
+  padding: 40px clamp(24px, 8vw, 120px);
+  text-align: left;
 }
 h1 {
   margin: 0 0 48px;
@@ -22,6 +22,9 @@ h1 {
   letter-spacing: -.09em;
   font-weight: 800;
 }
+.b { color: #f04d45; }
+.f-one { color: #3969eb; }
+.f-two { color: #df9d0a; }
 button {
   display: inline-flex;
   align-items: center;
