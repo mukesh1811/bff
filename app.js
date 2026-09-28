@@ -1,4 +1,4 @@
-import { firebaseConfig } from "./firebase-config.js";
+import { firebaseConfig } from "./firebase-config.js?v=2";
 
 const button = document.querySelector("#google-sign-in");
 const message = document.querySelector("#auth-message");
