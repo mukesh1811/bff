@@ -1,8 +1,7 @@
-// Firebase web app settings are public identifiers, not server-side credentials.
-// Copy these four values from Firebase console → Project settings → Your apps.
+// Public Firebase web app identifiers for Bot Friend Forever.
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  appId: "",
+  apiKey: "AIzaSyCg81iQq8i3ysRneQIipFxvWZkGM0vkCWE",
+  authDomain: "bot-friend-forever.firebaseapp.com",
+  projectId: "bot-friend-forever",
+  appId: "1:513708173119:web:505e356c34d928c6ff158a",
 };
