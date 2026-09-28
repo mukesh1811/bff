@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
     <title>BFF — Bot Friend Forever</title>
-    <link rel="stylesheet" href="./styles.css?v=4" />
-    <script type="module" src="./app.js?v=3"></script>
+    <link rel="stylesheet" href="./styles.css?v=5" />
+    <script type="module" src="./app.js?v=4"></script>
   </head>
   <body>
     <main>
@@ -28,6 +28,8 @@
 
         <div id="signed-in-view" hidden>
           <p>Hi, <strong id="account-name"></strong>.</p>
+          <a id="human-file" download="human.md" hidden>human.md</a>
+          <p id="file-message" role="status" aria-live="polite"></p>
           <button id="sign-out" type="button">Sign out</button>
         </div>
       </div>
